@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Heart Disease Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="Age">Age</label>
+            <input type="number" id="Age" name="Age" step="any" placeholder="Enter age (e.g., 65)" required>
+            
+            <label for="Sex">Sex</label>
+            <select id="Sex" name="Sex">
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+            </select>
+            
+            <label for="ChestPainType">ChestPainType</label>
+            <input type="number" id="ChestPainType" name="ChestPainType" step="any" placeholder="Enter 0-3 (e.g., 3)" required>
+            
+            <label for="RestingBloodPressure">RestingBloodPressure</label>
+            <input type="number" id="RestingBloodPressure" name="RestingBloodPressure" step="any" placeholder="Enter BP (e.g., 120)" required>
+            
+            <label for="Cholesterol">Cholesterol</label>
+            <input type="number" id="Cholesterol" name="Cholesterol" step="any" placeholder="Enter value (e.g., 200)" required>
+            
+            <label for="FastingBloodSugar">FastingBloodSugar</label>
+            <select id="FastingBloodSugar" name="FastingBloodSugar">
+                <option value="0">Fasting Blood Sugar < 120</option>
+                <option value="1">Fasting Blood Sugar ≥ 120</option>
+            </select>
+            
+            <label for="RestingECG">RestingECG</label>
+            <input type="number" id="RestingECG" name="RestingECG" placeholder="Enter 0-2 (e.g., 1)" required>
+            
+            <label for="MaxHeartRateAchieved">MaxHeartRateAchieved</label>
+            <input type="number" id="MaxHeartRateAchieved" name="MaxHeartRateAchieved" step="any" placeholder="Enter value (e.g., 150)" required>
+            
+            <label for="ExerciseInducedAngina">ExerciseInducedAngina</label>
+            <select id="ExerciseInducedAngina" name="ExerciseInducedAngina">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="ST_Depression">ST_Depression</label>
+            <input type="number" id="ST_Depression" name="ST_Depression" step="any" placeholder="Enter value (e.g., 1.0)" required>
+            
+            <label for="ST_Slope">ST_Slope</label>
+            <input type="number" id="ST_Slope" name="ST_Slope" step="any" placeholder="Enter 0-2 (e.g., 1)" required>
+            
+            <label for="MajorVessels">MajorVessels</label>
+            <input type="number" id="MajorVessels" name="MajorVessels" placeholder="Enter 0-4 (e.g., 0)" required>
+            
+            <label for="Thalassemia">Thalassemia</label>
+            <input type="number" id="Thalassemia" name="Thalassemia" placeholder="Enter 0-3 (e.g., 2)" required>
+            
+            <button type="submit">Predict</button>
+        </form>
+        
+        
+        {% if prediction %}
+        <div class="result">
+            Heart Disease Prediction: {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
